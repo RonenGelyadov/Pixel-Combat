@@ -4,7 +4,7 @@ public class Sword : MonoBehaviour
 {
 	[SerializeField] GameObject slashAnimPrefab;
 	[SerializeField] Transform SlashAnimSpawnPoint;
-
+	[SerializeField] Transform weaponCollider;
 
 	PlayerControls playerControls;
 	Animator myAnimator;
@@ -39,9 +39,35 @@ public class Sword : MonoBehaviour
 	void Attack()
 	{
 		myAnimator.SetTrigger("Attack");
+		weaponCollider.gameObject.SetActive(true);
 
 		slashAnim = Instantiate(slashAnimPrefab, SlashAnimSpawnPoint.position, Quaternion.identity);
 		slashAnim.transform.parent = this.transform.parent;
+	}
+
+	public void DoneAttackingAnimEvent()
+	{
+		weaponCollider.gameObject.SetActive(false);
+	}
+
+	public void SwingUpFlipAnimEvent()
+	{
+		slashAnim.transform.rotation = Quaternion.Euler(-180, 0, 0);
+
+		if (playerController.FacingLeft)
+		{
+			slashAnim.GetComponent<SpriteRenderer>().flipX = true;
+		}
+	}
+
+	public void SwingDownFlipAnimEvent()
+	{
+		slashAnim.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+		if (playerController.FacingLeft)
+		{
+			slashAnim.GetComponent<SpriteRenderer>().flipX = true;
+		}
 	}
 
 	void MouseFollowWithOffset()
@@ -49,15 +75,17 @@ public class Sword : MonoBehaviour
 		Vector3 mousePos = Input.mousePosition;
 		Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(playerController.transform.position);
 
-		float angle = Mathf.Atan2(mousePos.y - playerScreenPoint.y, Mathf.Abs(mousePos.x - playerScreenPoint.x)) * Mathf.Rad2Deg;
+		//float angle = Mathf.Atan2(mousePos.y - playerScreenPoint.y, Mathf.Abs(mousePos.x - playerScreenPoint.x)) * Mathf.Rad2Deg;
 
 		if (mousePos.x < playerScreenPoint.x)
 		{
-			activeWeapon.transform.rotation = Quaternion.Euler(0, -180, angle);
+			activeWeapon.transform.rotation = Quaternion.Euler(0, -180, 0); //angle in z
+			weaponCollider.transform.rotation = Quaternion.Euler(0, -180, 0);
 		}
 		else if (mousePos.x > playerScreenPoint.x)
 		{
-			activeWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
+			activeWeapon.transform.rotation = Quaternion.Euler(0, 0, 0); //angle in z
+			weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
 		}
 	}
 }
