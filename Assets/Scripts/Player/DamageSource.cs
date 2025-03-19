@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class DamageSource : MonoBehaviour
 {
+	[SerializeField] int damageAmount = 1;
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.GetComponent<EnemyAI>())
+		if (collision.gameObject.GetComponent<EnemyHealth>())
 		{
-			print("Yaaa !!!");
+			EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+			enemyHealth.TakeDamage(damageAmount);
 		}
 	}
 }
