@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float moveSpeed = 1f;
 
 	public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
+	public static PlayerController Instance;
 
 	PlayerControls playerControls;
 	Vector2 movement;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
 	void Awake()
 	{
+		Instance = this;
 		playerControls = new PlayerControls();
 		rb = GetComponent<Rigidbody2D>();
 		myAnimator = GetComponent<Animator>();

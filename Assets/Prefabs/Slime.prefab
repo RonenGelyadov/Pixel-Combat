@@ -102,6 +102,8 @@ GameObject:
   - component: {fileID: 1666263850906204668}
   - component: {fileID: 7920642988068694211}
   - component: {fileID: 6879797296567025715}
+  - component: {fileID: 6360981343293936868}
+  - component: {fileID: 198498286421500452}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -282,3 +284,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+--- !u!114 &6360981343293936868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940361094356556025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc27d49235dad24a86fd8f015b4f5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.2
+--- !u!114 &198498286421500452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940361094356556025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03b25cc83e8edb4292be6e848f5692c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: 4e0ce4653d78c8643b3112b3a1028649, type: 2}
+  restoreDefaultMatTime: 0.2
