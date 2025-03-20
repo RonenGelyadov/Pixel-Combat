@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -7,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     int currentHealth;
 	Knockback knockback;
 	Flash flash;
+
+	[SerializeField] GameObject DeathVFXprefab;
 	
 	void Awake()
 	{
@@ -24,6 +27,12 @@ public class EnemyHealth : MonoBehaviour
 		currentHealth -= damage;
 		knockback.GetKnockedBack(PlayerController.Instance.transform, 15f);
 		StartCoroutine(flash.FlashRoutine());
+		StartCoroutine(CheckDetectDeathRoutine());
+	}
+
+	IEnumerator CheckDetectDeathRoutine()
+	{
+		yield return new WaitForSeconds(flash.GetRestoreMatTime());
 		DetectDeath();
 	}
 
@@ -31,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
 	{
 		if (currentHealth <= 0)
 		{
+			Instantiate(DeathVFXprefab, transform.position, Quaternion.identity);
 			Destroy(gameObject);
 		}
 	}
