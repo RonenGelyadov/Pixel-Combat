@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float moveSpeed = 1f;
 	[SerializeField] float dashSpeed = 4;
 	[SerializeField] TrailRenderer myTrailRenderer;
-	public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
+	public bool FacingLeft { get { return facingLeft; } }
 	public static PlayerController Instance;
 
 
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	Rigidbody2D rb;
 	Animator myAnimator;
 	SpriteRenderer mySpriteRenderer;
+	float startingMoveSpeed;
 
 	bool facingLeft = false;
 	bool isDashing = false;
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
 	void Start()
 	{
 		playerControls.Combat.Dash.performed += _ => Dash();
+
+		startingMoveSpeed = moveSpeed;
 	}
 
 	void OnEnable()
@@ -71,12 +74,12 @@ public class PlayerController : MonoBehaviour
 		if (mousePos.x < playerScreenPoint.x)
 		{
 			mySpriteRenderer.flipX = true;
-			FacingLeft = true;
+			facingLeft = true;
 		}
 		else if (mousePos.x > playerScreenPoint.x)
 		{
 			mySpriteRenderer.flipX = false;
-			FacingLeft = false;
+			facingLeft = false;
 		}
 	}
 
@@ -96,7 +99,7 @@ public class PlayerController : MonoBehaviour
 		float dashTime = 0.2f;
 		float dashCD = 0.25f;
 		yield return new WaitForSeconds(dashTime);
-		moveSpeed /= dashSpeed;
+		moveSpeed = startingMoveSpeed;
 		myTrailRenderer.emitting = false;
 		yield return new WaitForSeconds(dashCD);
 		isDashing = false;
