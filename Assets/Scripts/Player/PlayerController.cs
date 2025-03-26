@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
 	[SerializeField] float moveSpeed = 1f;
-	[SerializeField] float dashSpeed = 4;
+	[SerializeField] float dashSpeed = 4f;
 	[SerializeField] TrailRenderer myTrailRenderer;
 	public bool FacingLeft { get { return facingLeft; } }
-	public static PlayerController Instance;
-
 
 	PlayerControls playerControls;
 	Vector2 movement;
@@ -21,9 +19,9 @@ public class PlayerController : MonoBehaviour
 	bool facingLeft = false;
 	bool isDashing = false;
 
-	void Awake()
+	protected override void Awake()
 	{
-		Instance = this;
+		base.Awake();
 		playerControls = new PlayerControls();
 		rb = GetComponent<Rigidbody2D>();
 		myAnimator = GetComponent<Animator>();
