@@ -1,18 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class Sword : MonoBehaviour
+public class Sword : MonoBehaviour, IWeapon
 {
 	[SerializeField] GameObject slashAnimPrefab;
 	[SerializeField] Transform SlashAnimSpawnPoint;
 	[SerializeField] Transform weaponCollider;
 	[SerializeField] float swordAttackCD = 0.5f;
 
-	PlayerControls playerControls;
 	Animator myAnimator;
 	PlayerController playerController;
 	ActiveWeapon activeWeapon;
-	bool attackButtonDown, isAttacking = false; 
 
 	GameObject slashAnim;
 
@@ -21,55 +19,30 @@ public class Sword : MonoBehaviour
 		playerController = GetComponentInParent<PlayerController>();
 		activeWeapon = GetComponentInParent<ActiveWeapon>();
 		myAnimator = GetComponent<Animator>();
-		playerControls = new PlayerControls();
 	}
 
-	void OnEnable()
-	{
-		playerControls.Enable();
-	}
-
-	void Start()
-	{
-		playerControls.Combat.Attack.started += _ => StartAttacking();
-		playerControls.Combat.Attack.canceled += _ => StopAttacking();
-	}
 
 	void Update()
 	{
 		MouseFollowWithOffset();
-		Attack();
 	}
 
-	void StartAttacking()
+
+	public void Attack()
 	{
-		attackButtonDown = true;
-	}
+		myAnimator.SetTrigger("Attack");
+		weaponCollider.gameObject.SetActive(true);
 
-	void StopAttacking()
-	{
-		attackButtonDown = false;
-	}
+		slashAnim = Instantiate(slashAnimPrefab, SlashAnimSpawnPoint.position, Quaternion.identity);
+		slashAnim.transform.parent = this.transform.parent;
 
-	void Attack()
-	{
-		if (attackButtonDown && !isAttacking)
-		{
-			isAttacking = true;
-			myAnimator.SetTrigger("Attack");
-			weaponCollider.gameObject.SetActive(true);
-
-			slashAnim = Instantiate(slashAnimPrefab, SlashAnimSpawnPoint.position, Quaternion.identity);
-			slashAnim.transform.parent = this.transform.parent;
-
-			StartCoroutine(AttackCDRoutine());
-		}
+		StartCoroutine(AttackCDRoutine());
 	}
 
 	IEnumerator AttackCDRoutine()
 	{
 		yield return new WaitForSeconds(swordAttackCD);
-		isAttacking = false;
+		ActiveWeapon.Instance.ToggleIsAttacking(false);
 	}
 
 	public void DoneAttackingAnimEvent()

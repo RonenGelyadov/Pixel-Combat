@@ -36,6 +36,13 @@ public class ActiveInventory : MonoBehaviour
 		}
 
 		this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
+
+		ChangeActiveWeapon();
+	}
+
+	void ChangeActiveWeapon()
+	{
+		Debug.Log(transform.GetChild(activeSlotIndexNum).GetComponent<InventorySlot>().GetWeaponInfo().name);
 	}
 }
 
