@@ -5,7 +5,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 	PlayerControls playerControls;
 	bool attackButtonDown, isAttacking = false;
 
-	[SerializeField] MonoBehaviour currentActiveWeapon;
+	public MonoBehaviour CurrentActiveWeapon { get; private set; }
 
 	protected override void Awake()
 	{
@@ -30,6 +30,16 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 		Attack();
 	}
 
+	public void NewWeapon(MonoBehaviour newWeapon)
+	{
+		CurrentActiveWeapon = newWeapon;
+	}
+
+	public void WeaponNull()
+	{
+		CurrentActiveWeapon = null;
+	}
+
 	public void ToggleIsAttacking(bool value)
 	{
 		isAttacking = value;
@@ -47,10 +57,10 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
 	void Attack()
 	{
-		if (attackButtonDown && !isAttacking)
+		if (attackButtonDown && !isAttacking && CurrentActiveWeapon != null)
 		{
 			isAttacking = true;
-			(currentActiveWeapon as IWeapon).Attack();
+			(CurrentActiveWeapon as IWeapon).Attack();
 		}		
 	}
 }
