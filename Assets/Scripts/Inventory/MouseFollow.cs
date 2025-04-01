@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class MouseFollow : MonoBehaviour
 {
-	Vector3 mousePosition;
-
 	void Update()
 	{
 		FaceMouse();
@@ -11,11 +9,9 @@ public class MouseFollow : MonoBehaviour
 
 	void FaceMouse()
 	{
-		mousePosition = Input.mousePosition;
+		Vector3 mousePosition = Input.mousePosition;
 		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
 		Vector2 direction = transform.position - mousePosition;
-
 		transform.right = -direction;
 	}
 }
