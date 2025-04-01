@@ -4,9 +4,10 @@ using UnityEngine;
 public class Sword : MonoBehaviour, IWeapon
 {
 	[SerializeField] GameObject slashAnimPrefab;
-	Transform slashAnimSpawnPoint;
-	[SerializeField] float swordAttackCD = 0.5f;
+	// [SerializeField] float swordAttackCD = 0.5f;
+	[SerializeField] WeaponInfo weaponInfo;
 	
+	Transform slashAnimSpawnPoint;
 	Transform weaponCollider;
 	Animator myAnimator;
 	GameObject slashAnim;
@@ -27,22 +28,17 @@ public class Sword : MonoBehaviour, IWeapon
 		MouseFollowWithOffset();
 	}
 
+	public WeaponInfo GetWeaponInfo()
+	{
+		return weaponInfo;
+	}
 
 	public void Attack()
 	{
 		myAnimator.SetTrigger("Attack");
 		weaponCollider.gameObject.SetActive(true);
-
 		slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
 		slashAnim.transform.parent = this.transform.parent;
-
-		StartCoroutine(AttackCDRoutine());
-	}
-
-	IEnumerator AttackCDRoutine()
-	{
-		yield return new WaitForSeconds(swordAttackCD);
-		ActiveWeapon.Instance.ToggleIsAttacking(false);
 	}
 
 	public void DoneAttackingAnimEvent()
@@ -75,7 +71,7 @@ public class Sword : MonoBehaviour, IWeapon
 		Vector3 mousePos = Input.mousePosition;
 		Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController.Instance.transform.position);
 
-		//float angle = Mathf.Atan2(mousePos.y - playerScreenPoint.y, Mathf.Abs(mousePos.x - playerScreenPoint.x)) * Mathf.Rad2Deg;
+		// float angle = Mathf.Atan2(mousePos.y - playerScreenPoint.y, Mathf.Abs(mousePos.x - playerScreenPoint.x)) * Mathf.Rad2Deg;
 
 		if (mousePos.x < playerScreenPoint.x)
 		{
