@@ -6,6 +6,7 @@ public class MagicLaser : MonoBehaviour
 {
 	[SerializeField] float laserGrowTime = 2f;
 
+	bool isGrowing = true;
 	float laserRange;
 	SpriteRenderer spriteRenderer;
 	CapsuleCollider2D capsuleCollider;
@@ -18,7 +19,15 @@ public class MagicLaser : MonoBehaviour
 
 	void Start()
 	{
-		LaserFaceMouse();
+		LaserFaceMouse();		
+	}
+
+	void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.GetComponent<Indestructible>() && !collision.isTrigger)
+		{
+			isGrowing = false;
+		}
 	}
 
 	public void UpdateLaserRange(float laserRange)
@@ -31,7 +40,7 @@ public class MagicLaser : MonoBehaviour
 	{
 		float timePassed = 0f;
 
-		while (spriteRenderer.size.x < laserRange)
+		while (spriteRenderer.size.x < laserRange && isGrowing)
 		{
 			timePassed += Time.deltaTime;
 			float linearTime = timePassed / laserGrowTime;
