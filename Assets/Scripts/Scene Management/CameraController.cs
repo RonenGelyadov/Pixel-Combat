@@ -5,6 +5,11 @@ public class CameraController : Singleton<CameraController>
 {
 	CinemachineCamera cinemachineCamera;
 
+	void Start()
+	{
+		SetPlayerCameraFollow();
+	}
+
 	public void SetPlayerCameraFollow()
 	{
 		cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
