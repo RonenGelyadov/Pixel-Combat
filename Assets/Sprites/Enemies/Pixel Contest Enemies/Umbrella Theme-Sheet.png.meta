@@ -55,12 +55,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -151,10 +151,10 @@ TextureImporter:
       name: Umbrella Theme-Sheet_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 13
-        width: 22
-        height: 31
+        x: 0
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: Umbrella Theme-Sheet_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 12
-        width: 22
-        height: 32
+        x: 48
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: Umbrella Theme-Sheet_2
       rect:
         serializedVersion: 2
-        x: 109
-        y: 13
-        width: 22
-        height: 31
+        x: 96
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +217,10 @@ TextureImporter:
       name: Umbrella Theme-Sheet_3
       rect:
         serializedVersion: 2
-        x: 157
-        y: 12
-        width: 22
-        height: 32
+        x: 144
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,7 +248,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Umbrella Theme-Sheet_0: 4009818976953495543
+      Umbrella Theme-Sheet_1: -3067908814198310343
+      Umbrella Theme-Sheet_2: 8679691620045111274
+      Umbrella Theme-Sheet_3: -2621290759944311950
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

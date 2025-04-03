@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 08c22287ecdba524d9be23c797cfea06
+guid: 6cc4734e67e3adc4b8320feb4ef21f79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6850157495594647058
-    second: Pink eyeball_0
-  - first:
-      213: 8727404412767530603
-    second: Pink eyeball_1
+      213: 2208703988740019828
+    second: Bullet_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -142,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pink eyeball_0
+      name: Bullet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 147
-        width: 128
-        height: 106
+        x: 3
+        y: 3
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,30 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 21ef564d2f5a01f50800000000000000
-      internalID: 6850157495594647058
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pink eyeball_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 23
-        width: 125
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b6e6f2ad218fd1970800000000000000
-      internalID: 8727404412767530603
+      spriteID: 47656d65394e6ae10800000000000000
+      internalID: 2208703988740019828
       vertices: []
       indices: 
       edges: []
@@ -198,9 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Pink eyeball_0: 6850157495594647058
-      Pink eyeball_1: 8727404412767530603
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
