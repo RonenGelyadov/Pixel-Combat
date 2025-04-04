@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 845610761968538578}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,3 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3068275645715546139, guid: b94b93dc6f8c6d34f9e348c23da4187d, type: 3}
+  bulletMoveSpeed: 6
+  burstCount: 5
+  timeBetweenBursts: 0.3
+  restTime: 1

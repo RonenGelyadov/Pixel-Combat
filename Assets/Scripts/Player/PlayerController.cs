@@ -65,8 +65,6 @@ public class PlayerController : Singleton<PlayerController>
 		return slashAnimSpawnPoint;
 	}
 
-	public 
-
 	void PlayerInput()
 	{
 		movement = playerControls.Movement.Move.ReadValue<Vector2>();
