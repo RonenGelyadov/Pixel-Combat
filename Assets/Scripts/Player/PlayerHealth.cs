@@ -40,7 +40,6 @@ public class PlayerHealth : MonoBehaviour
 
 		canTakeDamage = false;
 		currentHealth -= damage;
-		Debug.Log(currentHealth);
 		knockback.GetKnockedBack(hitTransform, knockBackThrustAmount);
 		StartCoroutine(flash.FlashRoutine());
 		StartCoroutine(DamageRecoveryRoutine());
