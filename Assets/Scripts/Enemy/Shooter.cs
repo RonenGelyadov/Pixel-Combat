@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -26,30 +27,64 @@ public class Shooter : MonoBehaviour, IEnemy
 	IEnumerator ShootRoutine()
 	{
 		isShooting = true;
-		
-		Vector2 targetDirection = PlayerController.Instance.transform.position - transform.position;
-		float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x);
+
+		float startAngle, currentAngle, angleStep;
+		TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep);
 
 		for (int i = 0; i < burstCount; i++)
 		{
-
-			GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-			newBullet.transform.right = targetDirection;
-
-			if (newBullet.TryGetComponent(out Projectile projectile))
+			for (int j = 0; j < projectilesPerBurst; j++)
 			{
-				projectile.UpdateMoveSpeed(bulletMoveSpeed);
+				Vector2 pos = FindBulletSpawnPos(currentAngle);
+
+				GameObject newBullet = Instantiate(bulletPrefab, pos, Quaternion.identity);
+				newBullet.transform.right = newBullet.transform.position - transform.position;
+
+				if (newBullet.TryGetComponent(out Projectile projectile))
+				{
+					projectile.UpdateMoveSpeed(bulletMoveSpeed);
+				}
+
+				currentAngle += angleStep;
 			}
 
+			currentAngle = startAngle;
+
 			yield return new WaitForSeconds(timeBetweenBursts);
+
+			TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep);
 		}
 
 		yield return new WaitForSeconds(restTime);
 		isShooting = false;
 	}
 
-	//public float GetEnemyRange()
-	//{
-	//	return range;
-	//}
+	private void TargetConeOfInfluence(out float startAngle, out float currentAngle, out float angleStep)
+	{
+		Vector2 targetDirection = PlayerController.Instance.transform.position - transform.position;
+		float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+		startAngle = targetAngle;
+		float endAngle = targetAngle;
+		currentAngle = targetAngle;
+		float halfAngleSpread = 0f;
+		angleStep = 0f;
+		if (angleSpread != 0)
+		{
+			angleStep = angleSpread / (projectilesPerBurst - 1);
+			halfAngleSpread = angleSpread / 2;
+			startAngle = targetAngle - halfAngleSpread;
+			endAngle = targetAngle + halfAngleSpread;
+			currentAngle = startAngle;
+		}
+	}
+
+	Vector2 FindBulletSpawnPos(float currentAngle)
+	{
+		float x = transform.position.x + startingDistance * Mathf.Cos(currentAngle * Mathf.Deg2Rad);
+		float y = transform.position.y + startingDistance * Mathf.Sin(currentAngle * Mathf.Deg2Rad);
+
+		Vector2 pos = new Vector2(x, y);
+
+		return pos;
+	}
 }

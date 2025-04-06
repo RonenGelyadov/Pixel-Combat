@@ -31,15 +31,6 @@ public class EnemyAI : MonoBehaviour
 
 	void Start()
 	{
-		//if (enemyType)
-		//{
-		//	attackRange = (enemyType as IEnemy).GetEnemyRange();
-		//}
-		//else
-		//{
-		//	attackRange = 0f;
-		//}
-
 		roamPosition = GetRoamingPosition();
 	}
 
