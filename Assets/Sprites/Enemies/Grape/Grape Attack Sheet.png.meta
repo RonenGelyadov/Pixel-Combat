@@ -61,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -183,10 +183,10 @@ TextureImporter:
       name: Grape Attack Sheet_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 29
-        width: 19
-        height: 24
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: Grape Attack Sheet_1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 29
-        width: 19
-        height: 25
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,10 +227,10 @@ TextureImporter:
       name: Grape Attack Sheet_2
       rect:
         serializedVersion: 2
-        x: 149
-        y: 29
-        width: 19
-        height: 26
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,10 +249,10 @@ TextureImporter:
       name: Grape Attack Sheet_3
       rect:
         serializedVersion: 2
-        x: 213
-        y: 29
-        width: 19
-        height: 26
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,10 +271,10 @@ TextureImporter:
       name: Grape Attack Sheet_4
       rect:
         serializedVersion: 2
-        x: 277
-        y: 29
-        width: 20
-        height: 25
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -293,10 +293,10 @@ TextureImporter:
       name: Grape Attack Sheet_5
       rect:
         serializedVersion: 2
-        x: 341
-        y: 29
-        width: 20
-        height: 25
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
