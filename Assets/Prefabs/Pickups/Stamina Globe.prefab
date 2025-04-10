@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28db30089abdc14399a3002a0a50288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpType: 1
   pickUpDistance: 4
   acceleration: 5
   moveSpeed: 2

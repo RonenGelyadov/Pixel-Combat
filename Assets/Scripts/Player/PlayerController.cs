@@ -99,8 +99,9 @@ public class PlayerController : Singleton<PlayerController>
 
 	void Dash()
 	{
-		if (!isDashing)
+		if (!isDashing && Stamina.Instance.CurrentStamina > 0)
 		{
+			Stamina.Instance.UseStamina();
 			isDashing = true;
 			moveSpeed *= dashSpeed;
 			myTrailRenderer.emitting = true;
